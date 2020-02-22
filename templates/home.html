@@ -57,8 +57,13 @@
             <div class="col s12">
               <h3>
                 By creation date:
-                <span class="min" data-target="creation-range">{{.SearchData.CreationRange.Min}}</span> -
-                <span class="max" data-target="creation-range">{{.SearchData.CreationRange.Max}}</span>
+                <span class="min" data-target="creation-range"
+                  >{{.SearchData.CreationRange.Min}}</span
+                >
+                -
+                <span class="max" data-target="creation-range"
+                  >{{.SearchData.CreationRange.Max}}</span
+                >
               </h3>
               <div class="input-field">
                 <div
@@ -66,17 +71,21 @@
                   data-min="{{.SearchData.CreationRange.Min}}"
                   data-max="{{.SearchData.CreationRange.Max}}"
                 ></div>
+                <br />
+                <button type="button" class="btn btn-small reset creation">
+                  Reset
+                </button>
               </div>
             </div>
             <div class="col s12">
               <h3>
                 By first album date:
                 <span class="min" data-target="first-album-range"
-                  >{{.SearchData.FirstAlbumsRange.Min}}</span
+                  >{{ .SearchData.FirstAlbumsRange.Min }}</span
                 >
                 -
                 <span class="max" data-target="first-album-range"
-                  >{{.SearchData.FirstAlbumsRange.Max}}</span
+                  >{{ .SearchData.FirstAlbumsRange.Max }}</span
                 >
               </h3>
               <div class="input-field">
@@ -85,27 +94,51 @@
                   data-min="{{.SearchData.FirstAlbumsRange.Min}}"
                   data-max="{{.SearchData.FirstAlbumsRange.Max}}"
                 ></div>
+                <br />
+                <button type="button" class="btn btn-small reset fa">
+                  Reset
+                </button>
               </div>
             </div>
             <div class="col s12">
               <h3>
                 By number of members:
-                <span class='min' data-target='members-range'>{{.SearchData.MembersRange.Min}}</span data-target='members-range'> -
-                 <span class='max' data-target='members-range'>{{.SearchData.MembersRange.Max}}</span>
+                <span class="min" data-target="members-range"
+                  >{{.SearchData.MembersRange.Min}}
+                </span>
+                -
+                <span class="max" data-target="members-range"
+                  >{{.SearchData.MembersRange.Max}}</span
+                >
               </h3>
-               <div class="input-field">
+              <div class="input-field">
                 <div
                   id="members-range"
                   data-min="{{.SearchData.MembersRange.Min}}"
                   data-max="{{.SearchData.MembersRange.Max}}"
                 ></div>
+                <br />
+                <button type="button" class="btn btn-small reset members">
+                  Reset
+                </button>
               </div>
             </div>
             <div class="col s12">
-              <h3>By concert locations</h3>
+              <h3>
+                By concert locations <br /><br />
+                <button
+                  type="button"
+                  class="btn btn-small reset locations remove"
+                >
+                  Uncheck all
+                </button>
+                <button type="button" class="btn btn-small reset locations add">
+                  Check all
+                </button>
+              </h3>
               {{ range .SearchData.Countries }}
               <label class="my-1">
-                <input type="checkbox" checked />
+                <input class="loc-input" type="checkbox" checked />
                 <span>{{.}}</span>
               </label>
               {{ end }}

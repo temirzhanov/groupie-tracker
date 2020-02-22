@@ -84,3 +84,29 @@ function createRanges() {
 
   return res
 }
+
+document
+  .querySelector('.reset.locations.remove')
+  .addEventListener('click', function(e) {
+    document.querySelectorAll('.loc-input').forEach(el => (el.checked = false))
+  })
+
+document
+  .querySelector('.reset.locations.add')
+  .addEventListener('click', function(e) {
+    document.querySelectorAll('.loc-input').forEach(el => (el.checked = true))
+  })
+
+document
+  .querySelector('.reset.creation')
+  .addEventListener('click', function(e) {
+    cRange.reset()
+  })
+
+document.querySelector('.reset.members').addEventListener('click', function(e) {
+  mRange.reset()
+})
+
+document.querySelector('.reset.fa').addEventListener('click', function(e) {
+  faRange.reset()
+})

@@ -249,8 +249,6 @@ func indexOfLocation(locations []Loc, locName string) int {
 func filterArtists(fdata FilterInput) []ParsedArtist {
 	res := []ParsedArtist{}
 
-	fmt.Printf("%+v\n", fdata)
-
 	for _, artist := range parsed {
 		if artist.CreationDate >= fdata.CreationRange.Min && artist.CreationDate <= fdata.CreationRange.Max {
 			if len(artist.Members) >= fdata.MembersRange.Min && len(artist.Members) <= fdata.MembersRange.Max {
