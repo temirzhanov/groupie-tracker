@@ -114,7 +114,21 @@ func handleFilter(w http.ResponseWriter, r *http.Request) {
 	body, _ := ioutil.ReadAll(r.Body)
 	fdata := FilterInput{}
 	json.Unmarshal(body, &fdata)
-	fmt.Printf("%+v\n", fdata)
+	// fmt.Printf("%+v\n", fdata)
+	found := filterArtists(fdata)
+
+	t, err := template.ParseFiles("templates/filter.html")
+
+	if err != nil {
+		handle500(w, err)
+		return
+	}
+
+	err = t.Execute(w, found)
+	if err != nil {
+		handle500(w, err)
+		return
+	}
 }
 
 // route: /

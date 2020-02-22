@@ -246,6 +246,30 @@ func indexOfLocation(locations []Loc, locName string) int {
 	return -1
 }
 
+func filterArtists(fdata FilterInput) []ParsedArtist {
+	res := []ParsedArtist{}
+
+	fmt.Printf("%+v\n", fdata)
+
+	for _, artist := range parsed {
+		if artist.CreationDate >= fdata.CreationRange.Min && artist.CreationDate <= fdata.CreationRange.Max {
+			if len(artist.Members) >= fdata.MembersRange.Min && len(artist.Members) <= fdata.MembersRange.Max {
+				if year, _ := getYear(artist.FirstAlbum); year >= fdata.FirstAlbumsRange.Min && year <= fdata.FirstAlbumsRange.Max {
+
+					for _, loc := range artist.DatesLocations {
+						if indexOf(getCountry(loc), fdata.Countries) >= 0 {
+							res = append(res, artist)
+							break
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return res
+}
+
 func buildSearchData() {
 	searchData = SearchData{
 		Names:            make(map[string]ParsedArtist),
@@ -332,10 +356,14 @@ func encodeURL(s string) string {
 func getCountries(locs []Loc) []string {
 	res := []string{}
 	for _, loc := range locs {
-		country := strings.Split(loc.Location, ", ")[1]
+		country := getCountry(loc.Location)
 		if indexOf(country, res) < 0 {
 			res = append(res, country)
 		}
 	}
 	return res
+}
+
+func getCountry(s string) string {
+	return strings.Split(s, ", ")[1]
 }

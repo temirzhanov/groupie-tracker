@@ -121,8 +121,12 @@ ul li {
   margin-bottom: 10px;
 }
 
+.filters h2 {
+  font-size: 2.5rem;
+}
+
 .filters h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1.5rem;
 }
 
