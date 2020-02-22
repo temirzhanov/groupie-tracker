@@ -1,0 +1,12 @@
+{
+	"comment": "",
+	"heroku": {
+		"goVersion": "go1.13",
+		"install": [
+			"./..."
+		]
+	},
+	"ignore": "test",
+	"package": [],
+	"rootPath": "git.01.alem.school/rtabulov/groupie-tracker"
+}
