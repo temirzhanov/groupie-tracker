@@ -28,10 +28,11 @@ filterForm.addEventListener('submit', function(e) {
     firstAlbumsRange: { min: 0, max: 0 }
   }
 
-  var inputs = document.querySelectorAll('#filter-form input:checked')
-  inputs.forEach(input =>
-    data.countries.push(input.closest('label').textContent.trim())
-  )
+  document
+    .querySelectorAll('#filter-form input:checked')
+    .forEach(input =>
+      data.countries.push(input.closest('label').textContent.trim())
+    )
 
   let min, max
   ;[min, max] = mRange.get()
